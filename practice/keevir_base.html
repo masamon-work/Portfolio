@@ -1,0 +1,126 @@
+<div class="section-template--15915775295734__16507079343ab0a462-padding">
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/three@0.140.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+    <script>
+      // page loading
+      window.addEventListener('DOMContentLoaded', init);
+
+      function init() {
+        // set size 変数指定(レンダラーのサイズ指定、canvasのクラス取得)
+        const width = window.innerWidth;;
+        const height = 350;;
+        const canvasElement = document.querySelector('#myCanvas');
+
+        // render レンダラーを作る
+        const renderer = new THREE.WebGLRenderer({
+          canvas: canvasElement,
+        });
+        // レンダラーのサイズ指定
+        renderer.setSize(width, height);
+        // Scene背景色を指定
+        renderer.setClearColor(0xffffff, 1.0);
+
+        // scene シーンを作る
+        const scene = new THREE.Scene();
+
+        // camera カメラを作る new THREE.PerspectiveCamera(画角, アスペクト比, 描画開始距離, 描画終了距離)
+        const camera = new THREE.PerspectiveCamera(45, width / height);
+        // XY for cam カメラの初期座標を設定
+        camera.position.set(0, 0, 1000);
+
+        // control camera カメラコントローラーを作成
+        const controls = new THREE.OrbitControls(camera, canvasElement);
+
+        // cam controller setteing 滑らかにカメラコントローラーを制御する
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.009;
+        //controls.enableZoom = false
+			  //controls.enablePan = false
+
+        // light ライトを作る new THREE.DirectionalLight(色)
+        const directionalLight = new THREE.DirectionalLight(0xffffff);
+        // ライトの方向
+        directionalLight.position.set(1, 1, 8);
+        // シーンに追加
+        scene.add(directionalLight);
+
+        // material マテリアル(素材)を用意
+        // const texture = new THREE.TextureLoader().load("https://www.realmadrid.com/StaticFiles/RealMadridResponsive/images/header_logo.svg");
+        // const texture = new THREE.TextureLoader().load("https://cdn.shopify.com/s/files/1/0686/8962/5399/files/2022_01.png?v=1669872926&width=500");
+        const texture = new THREE.TextureLoader().load("img/shoplogo.jpg");
+        const material = new THREE.MeshStandardMaterial({
+          // map: new THREE.TextureLoader().load('https://cdn.shopify.com/s/files/1/0637/8045/4646/files/kv_image_insta_1350_1080-03.jpg?v=1653721041'),
+          // map: new THREE.TextureLoader().load('img/logo.jpg'),
+          // map: new THREE.TextureLoader().load('https://cdn.shopify.com/s/files/1/0686/8962/5399/files/2022_01.png?v=1669872926&width=500'),
+          // map: new THREE.TextureLoader().load("https://www.realmadrid.com/StaticFiles/RealMadridResponsive/images/header_logo.svg"),
+          map: texture,
+          // color: 0x0000ff
+          // color: 0xFFFFFF
+        });
+
+        // sphere 球体のジオメトリ(形状)を用意
+        const geometry = new THREE.SphereGeometry(200, 30, 30);
+        // sphere ドーナツ形状のジオメトリ(形状)を用意
+        // const geometry = new THREE.TorusGeometry(120,30,150,1000);
+        // materilal mesh メッシュ(表示オブジェクト)を作成 new THREE.Mesh(ジオメトリ,マテリアル)
+        const earthMesh = new THREE.Mesh(geometry, material);
+        // mesh to scene シーンに追加
+        scene.add(earthMesh);
+
+        // particles 星屑を作成(カメラの動きをわかりやすくするため)
+        createStarField();
+
+        /** particles */
+        function createStarField() {
+          // points 頂点情報を格納する配列
+          const vertices = [];
+          // number of points 一辺3000の距離の中へランダムに1000個の粒子を配置
+          for (let i = 0; i < 1000; i++) {
+            const x = 3000 * (Math.random() - 0.5);
+            const y = 3000 * (Math.random() - 0.5);
+            const z = 3000 * (Math.random() - 0.5);
+
+            vertices.push(x, y, z);
+          }
+
+          // texture data 形状データ(頂点座標を格納した配列verticesからジオメトリ)を作成
+          const geometry = new THREE.BufferGeometry();
+          geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+          // material マテリアル(粒子)を作成
+          const material = new THREE.PointsMaterial({
+            // // 一つ一つのサイズ
+            size: 10,
+            // 色
+            color: 0x000000,
+          });
+
+          // object 物体を作成
+          const mesh = new THREE.Points(geometry, material);
+          scene.add(mesh);
+        }
+
+        tick();
+
+        // frame 毎フレーム時に実行されるループイベントです
+        function tick() {
+          // rotaring 球体を回転させる
+          earthMesh.rotation.y += 0.01;
+
+          // cam controler update カメラコントローラーを更新
+          controls.update();
+
+          // 描画する
+          renderer.render(scene, camera);
+
+          requestAnimationFrame(tick);
+        }
+      }
+    </script>
+  
+  
+    <canvas id="myCanvas" data-engine="three.js r140" width="681" height="350" style="width: 681px; height: 350px; touch-action: none;"></canvas>
+  
+
+  </div>

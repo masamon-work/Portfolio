@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+*{ 
+    margin:0;
+    padding:0;
+    list-style: none;
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+.top-head{
+    /* font-size: 1.25rem; */
+    margin-top: 34px;
+}
+
+/* .top-head ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    text-transform: uppercase;
+    margin: 0 20%;
+} */
+
+.top-head a{
+    color: white;
+    transition: .4s;
+}
+
+.top-head a:hover{
+    color: lightgreen;
+}
+
+.top-img{
+    background-color: gray;
+    max-width: ;
+    width: 100vh;
+    height: 150vh;
+    margin: 10% auto;
+}
+
+.top-img img{
+    width: 100%;
+    height: 100%;
+}

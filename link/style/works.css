@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+*{ 
+    margin:0;
+    padding:0;
+    /* box-sizing: border-box; */
+    list-style: none;
+    text-decoration: none;
+    /* text-align: center; */
+    /* background-color: limegreen; */
+}
+
+body{
+    /* background-color: rgb(255, 255, 255); */
+    background-color: black;
+}
+
+main{
+    /* background-color: limegreen; */
+    background-color: black;
+}
+
+.img{
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* background-color: aqua; */
+    /* flex-direction: row; */
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.img-item{
+    /* padding: 30px; */
+    /* padding: 5%; */
+    /* width: 32%; */
+    width: 100%;
+    height: 100%;
+    /* background-color: #fff; */
+    margin: 1% auto;
+}
+
+.img-18{
+    width: 100%;
+}
+
+.add{
+    opacity: 1;
+}
+
+.move{
+    opacity: 0.3;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.slick-dots{
+    /* color: red; */
+    opacity: 1;
+    /* background-color: red; */
+	bottom: -30px!important;
+}
+
+.slick-dots button {
+    /* 色を透明にする */
+    /* color: transparent; */
+    /*ドットボタンの色*/
+    /* background:red; */
+    opacity: 1;
+}
+
+.slick-dots .slick-active button{
+    /*ドットボタンの現在地表示の色*/
+    background:limegreen;
+    /* color: blue; */
+    opacity: 1;
+}
+
+.slick-dots li button:before {
+    background: limegreen;
+    /* opacity: 1; */
+}
+
+/*slick setting 矢印の色*/
+.slick-prev:before,
+.slick-next:before{
+    color: limegreen;
+}
+
+/* .img-item:not(:nth-child(3n+3)) {
+    margin-right: 2%;
+}
+.img-item:nth-child(n+4) {
+    margin-top: 30px;
+} */
+
+/* .img-2023,.img-2022,.img-2021,.img-2020,.img-2019{
+    display: flex;
+} */
+
+@media(max-width:390px){
+    *{ 
+        margin:0;
+        padding:0;
+        list-style: none;
+        text-decoration: none;
+        /* text-align: center; */
+    }
+    body{
+        /* background-color: limegreen; */
+        width: 100%;
+        height: 100%;
+    }
+    .img{
+        width: 80%;
+        height: 80%;
+        text-align: center;
+    }
+    
+    .img-item{
+        width: 100%;
+        height: 100%;
+        /* height: 800px; */
+        margin: 1% auto;
+    }
+    .slick-dots{
+        bottom: -90px!important;
+    }    
+}

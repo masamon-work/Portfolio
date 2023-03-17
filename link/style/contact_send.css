@@ -1,0 +1,76 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    /* text-align: center; */
+}
+
+h2{
+    background:grey;
+    color:white;
+    padding:10vh 0;
+    text-align: center;
+}
+
+form{
+    width:50vw;
+    margin:5vh auto;
+    /* background-color: aqua; */
+    padding-left: 10vh;
+}
+
+
+span{
+    display:block;
+    width:10vw;
+    /* background:yellow; */
+}
+
+input[type="submit"]{
+    /* display:block; */
+    width:15%;
+    background:green;
+    color:white;
+    margin:0 auto;
+    /* margin-left:90%; */
+    padding:10px 0;
+    border-radius:5px;
+    border:none;
+    cursor: pointer; /*指マークにする*/
+    transition:.4s;/*ゆっくり変化する*/
+    justify-content: center;
+}
+
+.button{
+    display: flex;
+    /* text-align: center; */
+    /* margin: 0 auto; */
+    /* padding-left: 35%; */
+    /* background-color: bisque; */
+}
+
+/*マウスを重ねた時*/
+input[type="submit"]:hover{
+    background:orange;
+}
+
+.echo{
+    width:50%;
+    margin: 5vh auto;
+    /* background-color: aquamarine; */
+    display: flex;
+    /* width:20vw; */
+    padding:1% 10%;
+    /* margin:3vh 0; */
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    font-size: 2vh;
+}
+a{
+    display: block;
+    text-align: center;
+    font-size: 1.5vh;
+}
